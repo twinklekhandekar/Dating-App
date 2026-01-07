@@ -7,14 +7,19 @@ const AuthSuccess = () => {
   const navigate = useNavigate();
   const { setUser } = AuthProvider();
 
-  useEffect(() => {
-    api.get("/auth/me")
-      .then(res => {
-        setUser(res.data);
-        navigate("/discover");
-      })
-      .catch(() => navigate("/login"));
-  }, []);
+useEffect(() => {
+  const finalizeLogin = async () => {
+    try {
+      const res = await api.get("/auth/me");
+      setUser(res.data);
+      navigate("/discover", { replace: true });
+    } catch {
+      navigate("/login", { replace: true });
+    }
+  };
+
+  finalizeLogin();
+}, []);
 
   return <p className="text-center mt-20">Signing you in...</p>;
 };
