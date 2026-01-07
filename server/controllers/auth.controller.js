@@ -8,8 +8,14 @@ exports.googleCallback = async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    res.redirect(`${process.env.CLIENT_URL}/login?token=${token}`);
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,      
+      sameSite: "none"    
+    });
+
+    res.redirect(`${process.env.CLIENT_URL}/auth/success`);
   } catch (err) {
-    res.status(500).json({ message: "Auth failed" });
+    res.redirect(`${process.env.CLIENT_URL}/login?error=auth_failed`);
   }
 };
