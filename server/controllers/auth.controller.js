@@ -14,7 +14,7 @@ exports.googleCallback = async (req, res) => {
       sameSite: "none"    
     });
 
-    res.redirect(`${process.env.CLIENT_URL}/auth/success`);
+    res.redirect(`${process.env.CLIENT_URL}/discover`);
   } catch (err) {
     res.redirect(`${process.env.CLIENT_URL}/login?error=auth_failed`);
   }
