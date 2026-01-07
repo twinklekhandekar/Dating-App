@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   photo: String,
   bio: { type: String, default: "" },
   gender: String,
-  interestedIn: String
+  interestedIn: String,
+  isDemo: { type: Boolean, default: false } // ✅ new field
 });
 
 module.exports = mongoose.model("User", userSchema);

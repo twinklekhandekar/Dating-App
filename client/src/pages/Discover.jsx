@@ -12,18 +12,21 @@ const Discover = () => {
   }, []);
 
   const likeUser = async () => {
-    try {
-      const res = await api.post("/match/like", {
-        toUser: users[index]._id,
-      });
+  if (!users[index]) return;
 
-      if (res.data.match) alert("It's a match! 💖");
+  // Move to next user immediately
+  nextUser();
 
-      nextUser();
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  try {
+    const res = await api.post("/match/like", {
+      toUser: users[index]._id,
+    });
+
+    if (res.data.match) alert("It's a match! 💖");
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   const skipUser = () => nextUser();
 
@@ -31,7 +34,7 @@ const Discover = () => {
     if (index + 1 < users.length) {
       setIndex(index + 1);
     } else {
-      setIndex(0); // loop back or show end message
+      setIndex(0); 
     }
   };
 
