@@ -17,8 +17,6 @@ const Profile = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-yellow-100 flex items-center justify-center p-4">
       <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl max-w-md w-full p-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Your Profile</h1>
-
-        {/* Avatar Placeholder */}
         <div className="flex justify-center mb-6">
           <img
             src={user.avatar || "https://i.pravatar.cc/150?img=47"}
@@ -27,7 +25,6 @@ const Profile = () => {
           />
         </div>
 
-        {/* Name Input */}
         <input
           className="border border-gray-300 rounded-lg p-3 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-purple-400"
           placeholder="Name"
@@ -35,7 +32,6 @@ const Profile = () => {
           onChange={e => setUser({ ...user, name: e.target.value })}
         />
 
-        {/* Bio Input */}
         <textarea
           className="border border-gray-300 rounded-lg p-3 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-purple-400 resize-none"
           placeholder="Bio"
@@ -43,7 +39,6 @@ const Profile = () => {
           onChange={e => setUser({ ...user, bio: e.target.value })}
         />
 
-        {/* Location Input */}
         <input
           className="border border-gray-300 rounded-lg p-3 w-full mb-6 focus:outline-none focus:ring-2 focus:ring-purple-400"
           placeholder="Location"

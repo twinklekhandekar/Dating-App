@@ -13,8 +13,6 @@ const Discover = () => {
 
   const likeUser = async () => {
   if (!users[index]) return;
-
-  // Move to next user immediately
   nextUser();
 
   try {
@@ -51,19 +49,17 @@ const Discover = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-yellow-100 flex items-center justify-center p-4">
       <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl max-w-sm w-full p-6 text-center">
-        {/* Avatar */}
+
         <img
           src={user.photo || "https://i.pravatar.cc/150?img=50"}
           alt={user.name}
           className="w-48 h-48 mx-auto rounded-full shadow-md mb-4 object-cover"
         />
 
-        {/* User Info */}
         <h2 className="text-2xl font-bold text-gray-800 mb-1">{user.name}</h2>
         <p className="text-gray-600 mb-2">{user.location || "Unknown"}</p>
         <p className="text-gray-700 mb-6">{user.bio || "No bio available"}</p>
 
-        {/* Action Buttons */}
         <div className="flex justify-between gap-4">
           <button
             onClick={skipUser}

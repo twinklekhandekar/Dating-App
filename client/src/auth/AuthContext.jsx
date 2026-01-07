@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      // fetch user from API or dummy user
       setUser({ name: "Jane Doe", email: "jane@example.com" });
     }
     setLoading(false);

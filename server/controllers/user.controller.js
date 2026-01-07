@@ -17,14 +17,12 @@ exports.updateProfile = async (req, res) => {
 
 exports.discoverUsers = async (req, res) => {
   try {
-    // Hardcoded demo users
     const demoUsers = [
       { _id: "demo1", name: "Aanya", photo: "https://i.pravatar.cc/150?img=1", bio: "Love hiking", location: "Mumbai" },
       { _id: "demo2", name: "Riya", photo: "https://i.pravatar.cc/150?img=2", bio: "Movie buff", location: "Delhi" },
       { _id: "demo3", name: "Sara", photo: "https://i.pravatar.cc/150?img=3", bio: "Coffee lover", location: "Bangalore" },
     ];
 
-    // Optional: fetch real users from DB
     const realUsers = await User.find({ _id: { $ne: req.userId } });
 
     const users = [...demoUsers, ...realUsers];
